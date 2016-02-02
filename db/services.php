@@ -26,7 +26,7 @@ $functions = array(
         'ottf_hello_world' => array(
                 'classname'   => 'ottf_external',
                 'methodname'  => 'hello_world',
-                'classpath'   => 'mod/moodle-ottf/externallib.php',
+                'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World) sending a new text as parameter',
                 'type'        => 'read'
         )
