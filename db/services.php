@@ -32,7 +32,7 @@ $functions = array(
         ),
         'ottf_total_enrolments' => array(
                 'classname'   => 'ottf_external',
-                'methodname'  => 'hello_world',
+                'methodname'  => 'total_enrolments',
                 'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return count of total enrolments across the platform.',
                 'type'        => 'read'
