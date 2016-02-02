@@ -29,5 +29,12 @@ $functions = array(
                 'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World) sending a new text as parameter',
                 'type'        => 'read'
+        ),
+        'ottf_total_enrolments' => array(
+                'classname'   => 'ottf_external',
+                'methodname'  => 'hello_world',
+                'classpath'   => 'local/ottf/externallib.php',
+                'description' => 'Return count of total enrolments across the platform.',
+                'type'        => 'read'
         )
 );

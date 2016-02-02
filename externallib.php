@@ -71,6 +71,49 @@ class ottf_external extends external_api {
         return new external_value(PARAM_TEXT, 'The welcome message + user first name');
     }
 
+    /**
+     * Returns description of method parameters
+     * @return external_function_parameters
+     */
+    public static function total_enrolments_parameters() {
+        return new external_function_parameters(array());
+    }
+
+    /**
+     * Returns welcome message
+     * @return string welcome message
+     */
+    public static function total_enrolments() {
+      global $DB;
+        //Capability checking
+        //OPTIONAL but in most web service it should present
+        // if (!has_capability('moodle/user:viewdetails', $context)) {
+        //     throw new moodle_exception('cannotviewprofile');
+        // }
+        $sql = "SELECT COUNT(u.id)
+        FROM mdl_user u
+        JOIN mdl_user_enrolments ue ON ue.userid = u.id
+        JOIN mdl_enrol e ON e.id = ue.enrolid
+        JOIN mdl_role_assignments ra ON ra.userid = u.id
+        JOIN mdl_context ct ON ct.id = ra.contextid AND ct.contextlevel = 50
+        JOIN mdl_course c ON c.id = ct.instanceid AND e.courseid = c.id
+        JOIN mdl_role r ON r.id = ra.roleid AND r.shortname = 'student'
+        WHERE
+        e.status = 0 AND u.suspended = 0 AND u.deleted = 0
+        AND
+        (ue.timeend = 0 OR ue.timeend > NOW()) AND ue.status = 0";
+
+        return $DB->count_records_sql($sql);
+    }
+
+    /**
+     * Returns description of method result value
+     * @return external_description
+     */
+    public static function total_enrolments_returns() {
+        return new external_value(PARAM_INT, 'Count of enrolments.');
+    }
+
 
 
 }
