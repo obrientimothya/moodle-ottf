@@ -20,9 +20,12 @@
  * @copyright  2016 Code Bigger (http://codebigger.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-require_once($CFG->libdir . "/externallib.php");
 
-class local_wstemplate_external extends external_api {
+defined('MOODLE_INTERNAL') || die;
+
+require_once("$CFG->libdir/externallib.php");
+
+class ottf_external extends external_api {
 
     /**
      * Returns description of method parameters

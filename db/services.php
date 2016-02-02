@@ -23,20 +23,11 @@
 
 // We defined the web service functions to install.
 $functions = array(
-        'local_wstemplate_hello_world' => array(
-                'classname'   => 'local_wstemplate_external',
+        'ottf_hello_world' => array(
+                'classname'   => 'ottf_external',
                 'methodname'  => 'hello_world',
-                'classpath'   => 'local/wstemplate/externallib.php',
+                'classpath'   => 'mod/moodle-ottf/externallib.php',
                 'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World) sending a new text as parameter',
-                'type'        => 'read',
-        )
-);
-
-We define the services to install as pre-build services. A pre-build service is not editable by administrator.
-$services = array(
-        'ottf_service' => array(
-                'functions' => array ('local_wstemplate_hello_world'),
-                'restrictedusers' => 0,
-                'enabled'=>1,
+                'type'        => 'read'
         )
 );

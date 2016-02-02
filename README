@@ -4,4 +4,4 @@ moodle-ottf
 Just some custom API functions for a client's project.
 Check it out if you like, some stuff may be useful ;-)
 
-Install the plugin in moodle/local/moodle-ottf
+Install the plugin in mod/moodle-ottf
