@@ -103,7 +103,7 @@ class ottf_external extends external_api {
         AND
         (ue.timeend = 0 OR ue.timeend > NOW()) AND ue.status = 0";
 
-        return array('total' => $DB->count_records_sql($sql));
+        return $DB->count_records_sql($sql);
     }
 
     /**
