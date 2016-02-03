@@ -153,7 +153,7 @@ class ottf_external extends external_api {
                 }
             }
         }
-        $users = $DB->get_records_select('user', $sql, $sqlparams, 'id ASC', $fields='*', $offset, $pagesize);
+        $users = $DB->get_records_select('user', $sql, $sqlparams, 'id ASC', '*', $offset, $pagesize);
         // Finally retrieve each users information.
         $returnedusers = array();
         foreach ($users as $user) {
