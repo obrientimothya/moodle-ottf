@@ -138,6 +138,7 @@ class ottf_external extends external_api {
                     case 'id':
                     case 'idnumber':
                     case 'username':
+                    case 'country':
                     case 'auth':
                         $sql .= $criteria['key'] . ' = :' . $criteria['key'];
                         $sqlparams[$criteria['key']] = $cleanedvalue;
