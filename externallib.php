@@ -278,6 +278,69 @@ class ottf_external extends external_api {
         return new external_value(PARAM_INT, 'Count of enrolments.');
     }
 
-
+    /**
+ * Create user return value description.
+ *
+ * @param array $additionalfields some additional field
+ * @return single_structure_description
+ */
+public static function user_description($additionalfields = array()) {
+    $userfields = array(
+        'id'    => new external_value(PARAM_INT, 'ID of the user'),
+        'username'    => new external_value(PARAM_RAW, 'The username', VALUE_OPTIONAL),
+        'firstname'   => new external_value(PARAM_NOTAGS, 'The first name(s) of the user', VALUE_OPTIONAL),
+        'lastname'    => new external_value(PARAM_NOTAGS, 'The family name of the user', VALUE_OPTIONAL),
+        'fullname'    => new external_value(PARAM_NOTAGS, 'The fullname of the user'),
+        'email'       => new external_value(PARAM_TEXT, 'An email address - allow email as root@localhost', VALUE_OPTIONAL),
+        'address'     => new external_value(PARAM_TEXT, 'Postal address', VALUE_OPTIONAL),
+        'phone1'      => new external_value(PARAM_NOTAGS, 'Phone 1', VALUE_OPTIONAL),
+        'phone2'      => new external_value(PARAM_NOTAGS, 'Phone 2', VALUE_OPTIONAL),
+        'icq'         => new external_value(PARAM_NOTAGS, 'icq number', VALUE_OPTIONAL),
+        'skype'       => new external_value(PARAM_NOTAGS, 'skype id', VALUE_OPTIONAL),
+        'yahoo'       => new external_value(PARAM_NOTAGS, 'yahoo id', VALUE_OPTIONAL),
+        'aim'         => new external_value(PARAM_NOTAGS, 'aim id', VALUE_OPTIONAL),
+        'msn'         => new external_value(PARAM_NOTAGS, 'msn number', VALUE_OPTIONAL),
+        'department'  => new external_value(PARAM_TEXT, 'department', VALUE_OPTIONAL),
+        'institution' => new external_value(PARAM_TEXT, 'institution', VALUE_OPTIONAL),
+        'idnumber'    => new external_value(PARAM_RAW, 'An arbitrary ID code number perhaps from the institution', VALUE_OPTIONAL),
+        'interests'   => new external_value(PARAM_TEXT, 'user interests (separated by commas)', VALUE_OPTIONAL),
+        'firstaccess' => new external_value(PARAM_INT, 'first access to the site (0 if never)', VALUE_OPTIONAL),
+        'lastaccess'  => new external_value(PARAM_INT, 'last access to the site (0 if never)', VALUE_OPTIONAL),
+        'auth'        => new external_value(PARAM_PLUGIN, 'Auth plugins include manual, ldap, imap, etc', VALUE_OPTIONAL),
+        'confirmed'   => new external_value(PARAM_INT, 'Active user: 1 if confirmed, 0 otherwise', VALUE_OPTIONAL),
+        'lang'        => new external_value(PARAM_SAFEDIR, 'Language code such as "en", must exist on server', VALUE_OPTIONAL),
+        'calendartype' => new external_value(PARAM_PLUGIN, 'Calendar type such as "gregorian", must exist on server', VALUE_OPTIONAL),
+        'theme'       => new external_value(PARAM_PLUGIN, 'Theme name such as "standard", must exist on server', VALUE_OPTIONAL),
+        'timezone'    => new external_value(PARAM_TIMEZONE, 'Timezone code such as Australia/Perth, or 99 for default', VALUE_OPTIONAL),
+        'mailformat'  => new external_value(PARAM_INT, 'Mail format code is 0 for plain text, 1 for HTML etc', VALUE_OPTIONAL),
+        'description' => new external_value(PARAM_RAW, 'User profile description', VALUE_OPTIONAL),
+        'descriptionformat' => new external_format_value('description', VALUE_OPTIONAL),
+        'city'        => new external_value(PARAM_NOTAGS, 'Home city of the user', VALUE_OPTIONAL),
+        'url'         => new external_value(PARAM_URL, 'URL of the user', VALUE_OPTIONAL),
+        'country'     => new external_value(PARAM_ALPHA, 'Home country code of the user, such as AU or CZ', VALUE_OPTIONAL),
+        'profileimageurlsmall' => new external_value(PARAM_URL, 'User image profile URL - small version'),
+        'profileimageurl' => new external_value(PARAM_URL, 'User image profile URL - big version'),
+        'customfields' => new external_multiple_structure(
+            new external_single_structure(
+                array(
+                    'type'  => new external_value(PARAM_ALPHANUMEXT, 'The type of the custom field - text field, checkbox...'),
+                    'value' => new external_value(PARAM_RAW, 'The value of the custom field'),
+                    'name' => new external_value(PARAM_RAW, 'The name of the custom field'),
+                    'shortname' => new external_value(PARAM_RAW, 'The shortname of the custom field - to be able to build the field class in the code'),
+                )
+            ), 'User custom fields (also known as user profile fields)', VALUE_OPTIONAL),
+        'preferences' => new external_multiple_structure(
+            new external_single_structure(
+                array(
+                    'name'  => new external_value(PARAM_ALPHANUMEXT, 'The name of the preferences'),
+                    'value' => new external_value(PARAM_RAW, 'The value of the custom field'),
+                )
+        ), 'Users preferences', VALUE_OPTIONAL)
+    );
+    if (!empty($additionalfields)) {
+        $userfields = array_merge($userfields, $additionalfields);
+    }
+    return new external_single_structure($userfields);
+  }
 
 }
