@@ -36,5 +36,12 @@ $functions = array(
                 'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return count of total enrolments across the platform.',
                 'type'        => 'read'
+        ),
+        'ottf_get_users' => array(
+                'classname'   => 'ottf_external',
+                'methodname'  => 'get_users',
+                'classpath'   => 'local/ottf/externallib.php',
+                'description' => 'Return a list of users based on criteria.',
+                'type'        => 'read'
         )
 );
