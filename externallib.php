@@ -58,7 +58,7 @@ class ottf_external extends external_api {
                         It could very slow or timeout. The function is designed to search some specific users.'
                 ),
                 'offset' => new external_value(PARAM_INT, 'Seek to offset before returning the next set of records.', VALUE_DEFAULT, 0),
-                'page_size' => new external_value(PARAM_INT, 'Number of records to return.', VALUE_DEFAULT, 25)
+                'pagesize' => new external_value(PARAM_INT, 'Number of records to return.', VALUE_DEFAULT, 25)
             )
         );
     }
