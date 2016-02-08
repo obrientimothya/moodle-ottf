@@ -50,5 +50,12 @@ $functions = array(
                 'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return number of countries with active users.',
                 'type'        => 'read'
+        ),
+        'ottf_total_hours' => array(
+                'classname'   => 'ottf_external',
+                'methodname'  => 'total_hours',
+                'classpath'   => 'local/ottf/externallib.php',
+                'description' => 'Return total number of learning hours.',
+                'type'        => 'read'
         )
 );

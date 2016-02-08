@@ -312,6 +312,42 @@ class ottf_external extends external_api {
         return new external_value(PARAM_INT, 'Count of countries.');
     }
 
+
+    /**
+     * Returns description of method parameters
+     * @return external_function_parameters
+     */
+    public static function total_hours_parameters() {
+        return new external_function_parameters(array());
+    }
+
+    /**
+     * Returns welcome message
+     * @return string welcome message
+     */
+    public static function total_hours() {
+      global $DB;
+        //Capability checking
+        //OPTIONAL but in most web service it should present
+        // if (!has_capability('moodle/user:viewdetails', $context)) {
+        //     throw new moodle_exception('cannotviewprofile');
+        // }
+        $sql = "SELECT ROUND(SUM(g.finalgrade), 0) total_hours
+        FROM  `mdl_grade_grades` g
+        INNER JOIN  `mdl_user` u ON g.userid = u.id
+        WHERE u.deleted =0";
+
+        return $DB->count_records_sql($sql);
+    }
+
+    /**
+     * Returns description of method result value
+     * @return external_description
+     */
+    public static function total_hours_returns() {
+        return new external_value(PARAM_INT, 'Count of countries.');
+    }
+
     /**
  * Create user return value description.
  *
