@@ -43,5 +43,12 @@ $functions = array(
                 'classpath'   => 'local/ottf/externallib.php',
                 'description' => 'Return a list of users based on criteria.',
                 'type'        => 'read'
+        ),
+        'ottf_total_countries' => array(
+                'classname'   => 'ottf_external',
+                'methodname'  => 'total_countries',
+                'classpath'   => 'local/ottf/externallib.php',
+                'description' => 'Return number of countries with active users.',
+                'type'        => 'read'
         )
 );
