@@ -207,7 +207,6 @@ class ottf_external extends external_api {
     public static function authorize() {
         global $USER;
 
-        $auth = "false";
         $admin = "false";
 
         //Context validationnt
@@ -219,7 +218,7 @@ class ottf_external extends external_api {
             $admin = "true";
         }
 
-        return array('auth' => $auth, 'admin' => $admin);
+        return array('auth' => "true", 'admin' => $admin);
     }
 
     /**
