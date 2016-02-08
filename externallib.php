@@ -280,6 +280,39 @@ class ottf_external extends external_api {
     }
 
     /**
+     * Returns description of method parameters
+     * @return external_function_parameters
+     */
+    public static function total_countries_parameters() {
+        return new external_function_parameters(array());
+    }
+
+    /**
+     * Returns welcome message
+     * @return string welcome message
+     */
+    public static function total_countries() {
+      global $DB;
+        //Capability checking
+        //OPTIONAL but in most web service it should present
+        // if (!has_capability('moodle/user:viewdetails', $context)) {
+        //     throw new moodle_exception('cannotviewprofile');
+        // }
+        $sql = "SELECT COUNT(c.country) total_countries
+        FROM (SELECT DISTINCT country FROM mdl_user WHERE deleted = 0) c";
+
+        return $DB->count_records_sql($sql);
+    }
+
+    /**
+     * Returns description of method result value
+     * @return external_description
+     */
+    public static function total_countries_returns() {
+        return new external_value(PARAM_INT, 'Count of countries.');
+    }
+
+    /**
  * Create user return value description.
  *
  * @param array $additionalfields some additional field
