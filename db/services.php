@@ -25,9 +25,9 @@
 $functions = array(
         'ottf_hello_world' => array(
                 'classname'   => 'ottf_external',
-                'methodname'  => 'hello_world',
+                'methodname'  => 'authorize',
                 'classpath'   => 'local/ottf/externallib.php',
-                'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World) sending a new text as parameter',
+                'description' => 'Check if user is valid. Also indicates admin status.',
                 'type'        => 'read'
         ),
         'ottf_total_enrolments' => array(

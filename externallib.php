@@ -196,23 +196,21 @@ class ottf_external extends external_api {
      * Returns description of method parameters
      * @return external_function_parameters
      */
-    public static function hello_world_parameters() {
-        return new external_function_parameters(
-                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"', VALUE_DEFAULT, 'Hello world, '))
-        );
+    public static function authorize_parameters() {
+        return new external_function_parameters(array());
     }
 
     /**
      * Returns welcome message
      * @return string welcome message
      */
-    public static function hello_world($welcomemessage = 'Hello world, ') {
+    public static function authorize() {
         global $USER;
 
         //Parameter validation
         //REQUIRED
-        $params = self::validate_parameters(self::hello_world_parameters(),
-                array('welcomemessage' => $welcomemessage));
+        // $params = self::validate_parameters(self::hello_world_parameters(),
+        //         array('welcomemessage' => $welcomemessage));
 
         //Context validation
         //OPTIONAL but in most web service it should present
@@ -225,15 +223,15 @@ class ottf_external extends external_api {
             throw new moodle_exception('cannotviewprofile');
         }
 
-        return $params['welcomemessage'] . $USER->firstname ;;
+        return array('auth' => true, 'admin' => false);
     }
 
     /**
      * Returns description of method result value
      * @return external_description
      */
-    public static function hello_world_returns() {
-        return new external_value(PARAM_TEXT, 'The welcome message + user first name');
+    public static function authorize_returns() {
+        return new external_single_structure(array('auth', 'admin'));
     }
 
     /**
