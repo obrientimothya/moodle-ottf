@@ -207,23 +207,19 @@ class ottf_external extends external_api {
     public static function authorize() {
         global $USER;
 
-        //Parameter validation
-        //REQUIRED
-        // $params = self::validate_parameters(self::hello_world_parameters(),
-        //         array('welcomemessage' => $welcomemessage));
+        $auth = "false";
+        $admin = "false";
 
-        //Context validation
-        //OPTIONAL but in most web service it should present
+        //Context validationnt
         $context = get_context_instance(CONTEXT_USER, $USER->id);
         self::validate_context($context);
 
-        //Capability checking
-        //OPTIONAL but in most web service it should present
-        if (!has_capability('moodle/user:viewdetails', $context)) {
-            throw new moodle_exception('cannotviewprofile');
+        // Check if user has admin roles
+        if ( has_capability('moodle/user:create', $context) && has_capability('moodle/user:update', $context) ) {
+            $admin = "true";
         }
 
-        return array('auth' => true, 'admin' => false);
+        return array('auth' => $auth, 'admin' => $admin);
     }
 
     /**
