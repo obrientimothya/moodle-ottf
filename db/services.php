@@ -23,7 +23,7 @@
 
 // We defined the web service functions to install.
 $functions = array(
-        'ottf_hello_world' => array(
+        'ottf_authorize' => array(
                 'classname'   => 'ottf_external',
                 'methodname'  => 'authorize',
                 'classpath'   => 'local/ottf/externallib.php',

@@ -231,7 +231,10 @@ class ottf_external extends external_api {
      * @return external_description
      */
     public static function authorize_returns() {
-        return new external_single_structure(array('auth', 'admin'));
+        return new external_single_structure(array(
+          'auth' => new external_value(PARAM_TEXT, 'true or false'),
+          'admin' => new external_value(PARAM_TEXT, 'true or false')
+        ));
     }
 
     /**
