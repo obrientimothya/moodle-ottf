@@ -189,8 +189,8 @@ class ottf_external extends external_api {
                              ),
                   'warnings' => new external_warnings('always set to \'key\'', 'faulty key name'),
                   'page' => new external_multiple_structure(array(
-                    'offset' => 'current record offset point',
-                    'pagesize' => 'current page size'
+                    'offset' => new external_value(PARAM_INT, 'current offset value'),
+                    'pagesize' => new external_value(PARAM_INT, 'current page size')
                   ))
             )
         );
