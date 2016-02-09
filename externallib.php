@@ -173,7 +173,8 @@ class ottf_external extends external_api {
                 }
             }
         }
-        return array('users' => $returnedusers, 'warnings' => $warnings);
+
+        return array('users' => $returnedusers, 'warnings' => $warnings, 'page' => array('offset' => $offset, 'pagesize' => $pagesize));
     }
     /**
      * Returns description of get_users result value.
@@ -186,7 +187,11 @@ class ottf_external extends external_api {
             array('users' => new external_multiple_structure(
                                 self::user_description()
                              ),
-                  'warnings' => new external_warnings('always set to \'key\'', 'faulty key name')
+                  'warnings' => new external_warnings('always set to \'key\'', 'faulty key name'),
+                  'page' => new external_multiple_structure(array(
+                    'offset' => 'current record offset point',
+                    'pagesize' => 'current page size'
+                  ))
             )
         );
     }
