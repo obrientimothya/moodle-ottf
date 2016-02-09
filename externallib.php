@@ -188,10 +188,11 @@ class ottf_external extends external_api {
                                 self::user_description()
                              ),
                   'warnings' => new external_warnings('always set to \'key\'', 'faulty key name'),
-                  'page' => new external_multiple_structure(array(
-                    'offset' => new external_value(PARAM_INT, 'current offset value'),
-                    'pagesize' => new external_value(PARAM_INT, 'current page size')
-                  ))
+                  'page' => new external_single_structure(array(
+                      'offset' => new external_value(PARAM_INT, 'current offset value'),
+                      'pagesize' => new external_value(PARAM_INT, 'current page size')
+                      )
+                    )
             )
         );
     }
