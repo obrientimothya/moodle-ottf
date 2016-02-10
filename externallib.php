@@ -70,7 +70,7 @@ class ottf_external extends external_api {
      * @return array An array of arrays containing user profiles.
      * @since Moodle 2.5
      */
-    public static function get_users($criteria = array(), $offset = 0, $pagesize = 0) {
+    public static function get_users($criteria = array(), $offset = '', $pagesize = '') {
         global $CFG, $USER, $DB;
         require_once($CFG->dirroot . "/user/lib.php");
         $params = self::validate_parameters(self::get_users_parameters(),
