@@ -80,8 +80,8 @@ class ottf_external extends external_api {
         $warnings = array();
         $sqlparams = array();
         $usedkeys = array();
-        // Do not retrieve deleted users.
-        $sql = ' deleted = 0';
+        // Do not retrieve deleted users, or the guest user
+        $sql = " deleted = 0 AND username !='guest'";
         foreach ($params['criteria'] as $criteriaindex => $criteria) {
             // Check that the criteria has never been used.
             if (array_key_exists($criteria['key'], $usedkeys)) {
