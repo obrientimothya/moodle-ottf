@@ -132,7 +132,7 @@ class ottf_external extends external_api {
             }
             if (!$invalidcriteria) {
                 $cleanedvalue = clean_param($criteria['value'], $paramtype);
-                $sql .= ' AND ';
+                $sql .= ' OR ';
                 // Create the SQL.
                 switch ($criteria['key']) {
                     case 'id':
