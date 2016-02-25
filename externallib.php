@@ -157,7 +157,7 @@ class ottf_external extends external_api {
         if ($pagesize > 0){
           $users = $DB->get_records_select('user', $sql, $sqlparams, 'lastname ASC, firstname ASC', '*', $offset, $pagesize);
         } else {
-          $users = $DB->get_records_select('user', $sql, $sqlparams, 'lastname ASC, firstname ASC', 'id,username,email,firstname,lastname,country');
+          $users = $DB->get_records_select('user', $sql, $sqlparams, 'lastname ASC, firstname ASC', 'id,username,email,firstname,lastname,country,description');
         }
         // Finally retrieve each users information.
         $returnedusers = array();
