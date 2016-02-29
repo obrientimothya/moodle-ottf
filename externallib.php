@@ -162,6 +162,7 @@ class ottf_external extends external_api {
         // Finally retrieve each users information.
         $returnedusers = array();
         foreach ($users as $user) {
+            $user['profileimageurl'] = str_replace('pluginfile','webservice/pluginfile',$user['profileimageurl']);
             $userdetails = user_get_user_details_courses($user);
             // Return the user only if all the searched fields are returned.
             // Otherwise it means that the $USER was not allowed to search the returned user.
